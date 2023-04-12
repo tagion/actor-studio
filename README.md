@@ -14,12 +14,7 @@ In general the flow of an actor will look something like this
     enum Ctrl {
         STARTING, // The actors is lively
         ALIVE, /// Send to the ownerTid when the task has been started
-        FAIL, /// This if a something failed other than an exception
         END, /// Send for the child to the ownerTid when the task ends
-    }
-
-    enum Msg {
-        // define the type of message your actor should be able to receive..
     }
 
     void someSpawnableTask() {
@@ -32,6 +27,9 @@ In general the flow of an actor will look something like this
         while (!stop) {
             try {
                 receive(
+                    (Msg!"hello", string str) {
+                        writeln(str);
+                    }
                     // If it's one of our defined messages
                     (Msg.SomeMsg, args..) {
                         // Implement messages..
@@ -57,7 +55,7 @@ In general the flow of an actor will look something like this
             // If we catch an exception we send it back to owner for them to deal with it.
             catch (Exception e) {
                 // Send the fail state along with the exception to the supervisour
-                setState(Ctrl.FAIL, e);
+                setState(FAIL, e);
             }
         }
     }
@@ -69,16 +67,15 @@ In general the flow of an actor will look something like this
 As a rule the actors themselves should never use the `receiveOnly!T` function.
 Then you might aswell be using async/await except kindof worse.
 
-We have created an actor class that handles most of the control flow so you actor should look somewhat like this
+The library implements an actor mixin template that handles most of the control flow so your actor should look something like this
 ```d
-static class MyActor : Actor {
+struct MyActor {
     // Define messages
-
-    void task() {
-        actorTask(
-        // Implement messages
-        );
+    void hello(Msg!"hello", string str) {
+        writeln(str);
     }
+    
+    mixinActor!(&hello);
 }
 
 spawnActor(MyActor, "some_task_name");
