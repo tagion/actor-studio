@@ -1,0 +1,1060 @@
+[
+ {
+  "name" : "tagion.actor.example",
+  "kind" : "module",
+  "file" : "example/app.d",
+  "comment" : " Examples for the actor based concurrency\n",
+  "members" : [
+   {
+    "name" : "tagion.actor.actor",
+    "kind" : "import",
+    "line" : 8,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.concurrency",
+    "kind" : "import",
+    "line" : 10,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.stdio",
+    "kind" : "import",
+    "line" : 11,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.format",
+    "kind" : "import",
+    "line" : 12,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "SuperVisor",
+    "kind" : "class",
+    "protection" : "public",
+    "line" : 14,
+    "char" : 1,
+    "base" : "tagion.actor.actor.Actor",
+    "members" : [
+     {
+      "name" : "task",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 16,
+      "char" : 10,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FNbZv",
+      "endline" : 18,
+      "endchar" : 5
+     }
+    ]
+   },
+   {
+    "name" : "SuperVisorHandle",
+    "kind" : "alias",
+    "protection" : "public",
+    "line" : 21,
+    "char" : 1,
+    "deco" : "S6tagion5actorQg__T11ActorHandleHTCQBiQBe7example10SuperVisorZQBr",
+    "originalType" : "ActorHandle!SuperVisor"
+   },
+   {
+    "name" : "Counter",
+    "kind" : "class",
+    "protection" : "public",
+    "comment" : "\n An actor that keeps counter\n Which can be modifyed by sending it an increase or decrease message\n",
+    "line" : 27,
+    "char" : 1,
+    "base" : "tagion.actor.actor.Actor",
+    "members" : [
+     {
+      "name" : "decrease",
+      "kind" : "alias",
+      "protection" : "public",
+      "line" : 29,
+      "char" : 5,
+      "deco" : "S6tagion5actorQg__T3MsgVAyaa8_6465637265617365ZQBc"
+     },
+     {
+      "name" : "increase",
+      "kind" : "alias",
+      "protection" : "public",
+      "line" : 30,
+      "char" : 5,
+      "deco" : "S6tagion5actorQg__T3MsgVAyaa8_696e637265617365ZQBc"
+     },
+     {
+      "name" : "task",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 32,
+      "char" : 10,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FNbZv",
+      "endline" : 37,
+      "endchar" : 5
+     },
+     {
+      "name" : "count",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 39,
+      "char" : 9,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "i",
+      "init" : "0"
+     },
+     {
+      "name" : "_decrease",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 41,
+      "char" : 10,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FS6tagion5actorQg__T3MsgVAyaa8_6465637265617365ZQBcZv",
+      "originalType" : "void(decrease)",
+      "parameters" : [
+       {
+        "name" : "_param_0",
+        "deco" : "S6tagion5actorQg__T3MsgVAyaa8_6465637265617365ZQBc"
+       }
+      ],
+      "endline" : 44,
+      "endchar" : 5
+     },
+     {
+      "name" : "_increase",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 46,
+      "char" : 10,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FS6tagion5actorQg__T3MsgVAyaa8_696e637265617365ZQBcZv",
+      "originalType" : "void(increase)",
+      "parameters" : [
+       {
+        "name" : "_param_0",
+        "deco" : "S6tagion5actorQg__T3MsgVAyaa8_696e637265617365ZQBc"
+       }
+      ],
+      "endline" : 49,
+      "endchar" : 5
+     }
+    ]
+   },
+   {
+    "name" : "CounterHandle",
+    "kind" : "alias",
+    "protection" : "public",
+    "comment" : "The handler type to our Counter\n",
+    "line" : 53,
+    "char" : 1,
+    "deco" : "S6tagion5actorQg__T11ActorHandleHTCQBiQBe7example7CounterZQBn",
+    "originalType" : "ActorHandle!Counter"
+   },
+   {
+    "name" : "Logger",
+    "kind" : "class",
+    "protection" : "public",
+    "comment" : "\n An actor which we can send log levels message too\n",
+    "line" : 58,
+    "char" : 1,
+    "base" : "tagion.actor.actor.Actor",
+    "members" : [
+     {
+      "name" : "hell",
+      "kind" : "alias",
+      "protection" : "public",
+      "line" : 60,
+      "char" : 5,
+      "deco" : "S6tagion5actorQg__T3MsgVAyaa4_68656c6cZQu"
+     },
+     {
+      "name" : "info",
+      "kind" : "alias",
+      "protection" : "public",
+      "line" : 61,
+      "char" : 5,
+      "deco" : "S6tagion5actorQg__T3MsgVAyaa4_696e666fZQu"
+     },
+     {
+      "name" : "fatal",
+      "kind" : "alias",
+      "protection" : "public",
+      "line" : 62,
+      "char" : 5,
+      "deco" : "S6tagion5actorQg__T3MsgVAyaa5_666174616cZQw"
+     },
+     {
+      "name" : "_hell",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 64,
+      "char" : 10,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FS6tagion5actorQg__T3MsgVAyaa4_68656c6cZQuQrZv",
+      "originalType" : "void(hell, string str)",
+      "parameters" : [
+       {
+        "name" : "_param_0",
+        "deco" : "S6tagion5actorQg__T3MsgVAyaa4_68656c6cZQu"
+       },
+       {
+        "name" : "str",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 66,
+      "endchar" : 5
+     },
+     {
+      "name" : "_info",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 68,
+      "char" : 10,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FS6tagion5actorQg__T3MsgVAyaa4_696e666fZQuQrZv",
+      "originalType" : "void(info, string str)",
+      "parameters" : [
+       {
+        "name" : "_param_0",
+        "deco" : "S6tagion5actorQg__T3MsgVAyaa4_696e666fZQu"
+       },
+       {
+        "name" : "str",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 70,
+      "endchar" : 5
+     },
+     {
+      "name" : "_fatal",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 72,
+      "char" : 10,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FS6tagion5actorQg__T3MsgVAyaa5_666174616cZQwQtZv",
+      "originalType" : "void(fatal, string str)",
+      "parameters" : [
+       {
+        "name" : "_param_0",
+        "deco" : "S6tagion5actorQg__T3MsgVAyaa5_666174616cZQw"
+       },
+       {
+        "name" : "str",
+        "deco" : "Aya"
+       }
+      ],
+      "endline" : 74,
+      "endchar" : 5
+     },
+     {
+      "name" : "task",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 76,
+      "char" : 18,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FNbZv",
+      "endline" : 82,
+      "endchar" : 5
+     }
+    ]
+   },
+   {
+    "name" : "LoggerHandle",
+    "kind" : "alias",
+    "protection" : "public",
+    "comment" : "The handler type to our Logger\n",
+    "line" : 87,
+    "char" : 1,
+    "deco" : "S6tagion5actorQg__T11ActorHandleHTCQBiQBe7example6LoggerZQBm",
+    "originalType" : "ActorHandle!Logger"
+   },
+   {
+    "name" : "main",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "Running through flow of top-level actors\n",
+    "line" : 90,
+    "char" : 6,
+    "deco" : "FZv",
+    "endline" : 112,
+    "endchar" : 1
+   },
+   {
+    "name" : "_d_cmain!()",
+    "kind" : "mixin",
+    "protection" : "public",
+    "line" : 90,
+    "char" : 6
+   }
+  ]
+ },
+ {
+  "name" : "tagion.actor.actor",
+  "kind" : "module",
+  "file" : "tagion/actor/actor.d",
+  "members" : [
+   {
+    "name" : "std.concurrency",
+    "kind" : "import",
+    "line" : 3,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.stdio",
+    "kind" : "import",
+    "line" : 4,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.format",
+    "kind" : "import",
+    "line" : 5,
+    "char" : 8,
+    "protection" : "private",
+    "selective" : [
+     "format"
+    ]
+   },
+   {
+    "name" : "std.typecons",
+    "kind" : "import",
+    "line" : 6,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "core.thread",
+    "kind" : "import",
+    "line" : 7,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "name" : "std.exception",
+    "kind" : "import",
+    "line" : 8,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "comment" : "\n Message \"Atomic\" type\n Examples:\n ---\n // As a type\n Msg!\"hi\";\n // As a value\n Msg!\"hi\"();\n ---\n",
+    "line" : 20,
+    "char" : 1,
+    "name" : "Msg",
+    "parameters" : [
+     {
+      "name" : "name",
+      "kind" : "value",
+      "deco" : "Aya"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "Msg",
+      "kind" : "struct",
+      "protection" : "public",
+      "line" : 20,
+      "char" : 1,
+      "members" : []
+     }
+    ]
+   },
+   {
+    "name" : "Ctrl",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 24,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "STARTING",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 25,
+      "char" : 5
+     },
+     {
+      "name" : "ALIVE",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "1",
+      "comment" : "Send to the ownerTid when the task has been started\n",
+      "line" : 26,
+      "char" : 5
+     },
+     {
+      "name" : "FAIL",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "2",
+      "comment" : "This if a something failed other than an exception\n",
+      "line" : 27,
+      "char" : 5
+     },
+     {
+      "name" : "END",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "3",
+      "comment" : "Send for the child to the ownerTid when the task ends\n",
+      "line" : 28,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "Sig",
+    "kind" : "enum",
+    "protection" : "public",
+    "line" : 32,
+    "char" : 1,
+    "baseDeco" : "i",
+    "members" : [
+     {
+      "name" : "STOP",
+      "kind" : "enum member",
+      "protection" : "public",
+      "value" : "0",
+      "line" : 33,
+      "char" : 5
+     }
+    ]
+   },
+   {
+    "name" : "CtrlMsg",
+    "kind" : "alias",
+    "protection" : "public",
+    "comment" : "Control message sent to a supervisor\ncontains the Tid of the actor which send it and the state\n",
+    "line" : 43,
+    "char" : 1,
+    "deco" : "S3std8typecons__T5TupleTSQy11concurrency3TidVAyaa3_746964TE6tagion5actorQg4CtrlVQBja4_6374726cZQDa"
+   },
+   {
+    "name" : "checkCtrl",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "Don't use this\n",
+    "line" : 46,
+    "char" : 6,
+    "deco" : "FE6tagion5actorQg4CtrlZb",
+    "parameters" : [
+     {
+      "name" : "msg",
+      "deco" : "E6tagion5actorQg4Ctrl"
+     }
+    ],
+    "endline" : 51,
+    "endchar" : 1
+   },
+   {
+    "name" : "ActorTask",
+    "kind" : "struct",
+    "protection" : "public",
+    "comment" : "Used by supervisor to represent a running task\n",
+    "line" : 54,
+    "char" : 1,
+    "members" : [
+     {
+      "name" : "tid",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 55,
+      "char" : 9,
+      "deco" : "S3std11concurrency3Tid",
+      "offset" : 0
+     },
+     {
+      "name" : "taskName",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 56,
+      "char" : 12,
+      "deco" : "Aya",
+      "offset" : 8
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "comment" : " A \"reference\" to an actor that may or may not be spawned, we will never know\n Params:\n  A = an actor type\n",
+    "line" : 64,
+    "char" : 1,
+    "name" : "ActorHandle",
+    "parameters" : [
+     {
+      "name" : "A",
+      "kind" : "type",
+      "deco" : "C6tagion5actorQg5Actor"
+     }
+    ],
+    "constraint" : "isActor!A",
+    "members" : [
+     {
+      "name" : "ActorHandle",
+      "kind" : "struct",
+      "protection" : "public",
+      "line" : 64,
+      "char" : 1,
+      "members" : [
+       {
+        "name" : "std.concurrency",
+        "kind" : "import",
+        "line" : 65,
+        "char" : 26,
+        "protection" : "private",
+        "alias" : "concurrency"
+       },
+       {
+        "name" : "tid",
+        "kind" : "variable",
+        "comment" : "the tid of the spawned task\n",
+        "line" : 68,
+        "char" : 9,
+        "type" : "Tid"
+       },
+       {
+        "name" : "taskName",
+        "kind" : "variable",
+        "comment" : "the name of the possibly running task\n",
+        "line" : 70,
+        "char" : 12,
+        "type" : "string"
+       },
+       {
+        "kind" : "template",
+        "line" : 72,
+        "char" : 10,
+        "name" : "send",
+        "parameters" : [
+         {
+          "name" : "T",
+          "kind" : "tuple"
+         }
+        ],
+        "members" : [
+         {
+          "name" : "send",
+          "kind" : "function",
+          "line" : 72,
+          "char" : 10,
+          "type" : "void(T vals)",
+          "parameters" : [
+           {
+            "name" : "vals",
+            "type" : "T"
+           }
+          ],
+          "endline" : 74,
+          "endchar" : 5
+         }
+        ]
+       },
+       {
+        "kind" : "template",
+        "comment" : "use\n",
+        "line" : 77,
+        "char" : 10,
+        "name" : "opDispatch",
+        "parameters" : [
+         {
+          "name" : "method",
+          "kind" : "value",
+          "type" : "string"
+         },
+         {
+          "name" : "Args",
+          "kind" : "tuple"
+         }
+        ],
+        "members" : [
+         {
+          "name" : "opDispatch",
+          "kind" : "function",
+          "line" : 77,
+          "char" : 10,
+          "type" : "void(Args args)",
+          "parameters" : [
+           {
+            "name" : "args",
+            "type" : "Args"
+           }
+          ],
+          "endline" : 79,
+          "endchar" : 5
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "comment" : " Create an actorHandle\n Params:\n   A = The type of actor you want to create a handle for\n   taskName = the task name to search for\n Returns: Actorhandle with type A\n Examples:\n ---\n actorHandle!MyActor(\"my_task_name\");\n ---\n",
+    "line" : 94,
+    "char" : 15,
+    "name" : "actorHandle",
+    "parameters" : [
+     {
+      "name" : "A",
+      "kind" : "type",
+      "deco" : "C6tagion5actorQg5Actor"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "actorHandle",
+      "kind" : "function",
+      "line" : 94,
+      "char" : 15,
+      "type" : "ActorHandle!A(string taskName)",
+      "parameters" : [
+       {
+        "name" : "taskName",
+        "type" : "string"
+       }
+      ],
+      "endline" : 97,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "comment" : " Params:\n   A = The type of actor you want to create a handle for\n   taskName = the name it should be started as\n   args = list of arguments to pass to the task function\n Returns: An actorHandle with type A\n Examples:\n ---\n spawnActor!MyActor(\"my_task_name\", 42);\n ---\n",
+    "line" : 110,
+    "char" : 15,
+    "name" : "spawnActor",
+    "parameters" : [
+     {
+      "name" : "A",
+      "kind" : "type",
+      "deco" : "C6tagion5actorQg5Actor"
+     },
+     {
+      "name" : "Args",
+      "kind" : "tuple"
+     }
+    ],
+    "constraint" : "isActor!A",
+    "members" : [
+     {
+      "name" : "spawnActor",
+      "kind" : "function",
+      "line" : 110,
+      "char" : 15,
+      "type" : "ActorHandle!A(string taskName, Args args)",
+      "parameters" : [
+       {
+        "name" : "taskName",
+        "type" : "string"
+       },
+       {
+        "name" : "args",
+        "type" : "Args"
+       }
+      ],
+      "endline" : 116,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "tidOwner",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "Nullable and nothrow wrapper around ownerTid\n",
+    "line" : 125,
+    "char" : 22,
+    "deco" : "FNbZS3std8typecons__T8NullableTSQBb11concurrency3TidZQBg",
+    "originalType" : "nothrow Nullable!Tid()",
+    "endline" : 139,
+    "endchar" : 1
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "comment" : "Send to the owner if there is one\n",
+    "line" : 142,
+    "char" : 6,
+    "name" : "sendOwner",
+    "parameters" : [
+     {
+      "name" : "T",
+      "kind" : "tuple"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "sendOwner",
+      "kind" : "function",
+      "line" : 142,
+      "char" : 6,
+      "type" : "void(T vals)",
+      "parameters" : [
+       {
+        "name" : "vals",
+        "type" : "T"
+       }
+      ],
+      "endline" : 153,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "setState",
+    "kind" : "function",
+    "protection" : "public",
+    "comment" : "send your state to your owner\n",
+    "line" : 156,
+    "char" : 14,
+    "deco" : "FNbE6tagion5actorQg4CtrlZv",
+    "parameters" : [
+     {
+      "name" : "ctrl",
+      "deco" : "E6tagion5actorQg4Ctrl"
+     }
+    ],
+    "endline" : 172,
+    "endchar" : 1
+   },
+   {
+    "name" : "std.algorithm.iteration",
+    "kind" : "import",
+    "line" : 174,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "kind" : "template",
+    "protection" : "public",
+    "line" : 176,
+    "char" : 7,
+    "name" : "spawnChildren",
+    "parameters" : [
+     {
+      "name" : "F",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "name" : "spawnChildren",
+      "kind" : "function",
+      "line" : 176,
+      "char" : 7,
+      "type" : "Tid[](F[] fns)",
+      "parameters" : [
+       {
+        "name" : "fns",
+        "type" : "F[]"
+       }
+      ],
+      "endline" : 186,
+      "endchar" : 1
+     }
+    ]
+   },
+   {
+    "name" : "Actor",
+    "kind" : "class",
+    "protection" : "public",
+    "comment" : " Base class for actor\n All members should be static\n Descendants should implement task and it should be nothrow\n Examples: See [Actor examples]($(DOC_ROOT_OBJECTS)tagion.actor.example$(DOC_EXTENSION))\n",
+    "line" : 194,
+    "char" : 10,
+    "members" : [
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "comment" : " The running task function your actor should implement\n",
+      "line" : 202,
+      "char" : 10,
+      "name" : "task",
+      "parameters" : [
+       {
+        "name" : "A",
+        "kind" : "tuple"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "task",
+        "kind" : "function",
+        "line" : 202,
+        "char" : 10,
+        "type" : "nothrow void(A args)",
+        "parameters" : [
+         {
+          "name" : "args",
+          "type" : "A"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "name" : "children",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 205,
+      "char" : 11,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "AS3std11concurrency3Tid"
+     },
+     {
+      "name" : "failChildren",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 206,
+      "char" : 14,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "HS3std11concurrency3TidQw"
+     },
+     {
+      "name" : "startChildren",
+      "kind" : "variable",
+      "protection" : "public",
+      "line" : 207,
+      "char" : 14,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "HS3std11concurrency3TidQw"
+     },
+     {
+      "name" : "stop",
+      "kind" : "variable",
+      "protection" : "public",
+      "comment" : "Static ActorHandle[] children;\n",
+      "line" : 209,
+      "char" : 10,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "b"
+     },
+     {
+      "name" : "signal",
+      "kind" : "function",
+      "protection" : "public",
+      "line" : 211,
+      "char" : 10,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FE6tagion5actorQg3SigZv",
+      "parameters" : [
+       {
+        "name" : "s",
+        "deco" : "E6tagion5actorQg3Sig"
+       }
+      ],
+      "endline" : 217,
+      "endchar" : 5
+     },
+     {
+      "name" : "control",
+      "kind" : "function",
+      "protection" : "public",
+      "comment" : "Controls message sent from the children.\n",
+      "line" : 220,
+      "char" : 10,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FS3std8typecons__T5TupleTSQy11concurrency3TidVAyaa3_746964TE6tagion5actorQg4CtrlVQBja4_6374726cZQDaZv",
+      "originalType" : "void(CtrlMsg msg)",
+      "parameters" : [
+       {
+        "name" : "msg",
+        "deco" : "S3std8typecons__T5TupleTSQy11concurrency3TidVAyaa3_746964TE6tagion5actorQg4CtrlVQBja4_6374726cZQDa"
+       }
+      ],
+      "endline" : 256,
+      "endchar" : 5
+     },
+     {
+      "name" : "ownerTerminated",
+      "kind" : "function",
+      "protection" : "public",
+      "comment" : "Stops the actor if the supervisor stops\n",
+      "line" : 259,
+      "char" : 10,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FC3std11concurrency15OwnerTerminatedZv",
+      "originalType" : "void(OwnerTerminated)",
+      "parameters" : [
+       {
+        "name" : "_param_0",
+        "deco" : "C3std11concurrency15OwnerTerminated"
+       }
+      ],
+      "endline" : 262,
+      "endchar" : 5
+     },
+     {
+      "name" : "unknown",
+      "kind" : "function",
+      "protection" : "public",
+      "comment" : " The default message handler, if it's an unknown messages it will send a FAIL to the owner.\n Params:\n   message = literally any message\n",
+      "line" : 269,
+      "char" : 10,
+      "storageClass" : [
+       "static"
+      ],
+      "deco" : "FS3std7variant__T8VariantNVmi32ZQpZv",
+      "originalType" : "void(Variant message)",
+      "parameters" : [
+       {
+        "name" : "message",
+        "deco" : "S3std7variant__T8VariantNVmi32ZQp"
+       }
+      ],
+      "endline" : 272,
+      "endchar" : 5
+     },
+     {
+      "kind" : "template",
+      "protection" : "public",
+      "comment" : " A General actor task\n\n Params:\n   opts = A list of message handlers similar to @std.concurrency.receive()\n",
+      "line" : 280,
+      "char" : 18,
+      "name" : "actorTask",
+      "parameters" : [
+       {
+        "name" : "T",
+        "kind" : "tuple"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "actorTask",
+        "kind" : "function",
+        "line" : 280,
+        "char" : 18,
+        "type" : "nothrow void(T opts)",
+        "parameters" : [
+         {
+          "name" : "opts",
+          "type" : "T"
+         }
+        ],
+        "endline" : 308,
+        "endchar" : 5
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "name" : "std.traits",
+    "kind" : "import",
+    "line" : 311,
+    "char" : 8,
+    "protection" : "private"
+   },
+   {
+    "kind" : "template",
+    "protection" : "private",
+    "comment" : "Checks if the actor is implemented correctly\n",
+    "line" : 314,
+    "char" : 9,
+    "name" : "isActor",
+    "parameters" : [
+     {
+      "name" : "A",
+      "kind" : "type"
+     }
+    ],
+    "members" : [
+     {
+      "kind" : "template",
+      "line" : 320,
+      "char" : 5,
+      "name" : "isTaskNothrow",
+      "parameters" : [
+       {
+        "name" : "A",
+        "kind" : "type"
+       }
+      ],
+      "members" : [
+       {
+        "name" : "task",
+        "kind" : "alias",
+        "line" : 321,
+        "char" : 9,
+        "type" : "__traits(getMember, A, \"task\")"
+       },
+       {
+        "name" : "isTaskNothrow",
+        "kind" : "variable",
+        "line" : 322,
+        "char" : 14,
+        "storageClass" : [
+         "enum"
+        ],
+        "init" : "functionAttributes!task & FunctionAttribute.nothrow_"
+       }
+      ]
+     },
+     {
+      "name" : "isActor",
+      "kind" : "variable",
+      "line" : 326,
+      "char" : 10,
+      "storageClass" : [
+       "enum"
+      ],
+      "init" : "isTaskNothrow!A"
+     }
+    ]
+   }
+  ]
+ }
+]
